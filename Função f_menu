@@ -32,11 +32,9 @@ case 0 :
 case 1 :
     cout <<"Voce selecionou a opção 2";
     break;
-case 2 :
+default :
     cout <<"Voce selecionou a opção 3";
     break;
-default :
-    cout <<"Voce selecionou a opção 4";
     }
 
     return 0;
