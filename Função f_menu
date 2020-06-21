@@ -1,0 +1,104 @@
+//Função que cria um menu personalizado
+
+#include <iostream>
+#include <windows.h>
+#include <conio.h>
+using namespace std;
+void textcolor (int iColor);
+void imp_lista(string lista[],int n,int op);
+void move_list(int &op,char tecla,int n);
+void menu_f(string pedido,string opcoes[],int n,int &op);
+
+int main()
+{
+
+    setlocale(LC_ALL, "Portuguese");
+
+    // n é o tamanho da lista
+    int n = 3,op = 0;
+    
+    //lista de opções
+    string opcoes[n] = {"Opção 1","Opção 2","Opção 3"};
+
+
+    menu_f("Qual opção você quer escolher : \naperte [w/s] para mudar e [Enter] para escolher\n\n",opcoes,n,op);
+
+
+    switch (op)
+    {
+case 0 :
+    cout <<"Voce selecionou a opção 1";
+    break;
+case 1 :
+    cout <<"Voce selecionou a opção 2";
+    break;
+case 2 :
+    cout <<"Voce selecionou a opção 3";
+    break;
+default :
+    cout <<"Voce selecionou a opção 4";
+    }
+
+    return 0;
+}
+
+
+void menu_f(string pedido,string opcoes[],int n,int &op){
+    char tecla;
+    //zera o op
+    op = 0;
+    do
+    {
+        system("cls");
+        cout <<pedido <<endl<<endl;
+        imp_lista(opcoes,n,op);
+        //reseta a tecla
+        tecla = 'z';
+        //prende o usuario no getch(); atê que ele digite, w,s,enter
+        while(tecla != 'w' and tecla != 'W' && tecla != 's' && tecla !='S' && tecla != 13)
+        {
+            tecla = getch();
+
+        }
+        //move para a direção escolhida w/s
+        move_list(op,tecla,n);
+    }
+    //sai do loop se o usuario apertar enter
+    while(tecla != 13);
+}
+
+void move_list(int &op,char tecla,int n)
+{
+    if(tecla == 'w' or tecla == 'W')
+    {
+        if(op != 0)
+            op--;
+    }
+    else if(tecla == 's' or tecla == 'S')
+        if(op != n-1)
+            op++;
+}
+
+void imp_lista(string lista[],int n,int op)
+{
+    for(int i=0; i<n; i++)
+    {
+        if(i==op)
+        {
+            textcolor(4);
+            cout << lista[i] << endl;
+            textcolor(15);
+        }
+        else cout << lista[i] << endl;
+    }
+}
+
+void textcolor (int iColor)
+{
+
+    HANDLE hl = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO bufferInfo;
+    BOOL b = GetConsoleScreenBufferInfo(hl, &bufferInfo);
+    bufferInfo.wAttributes &= 0x00F0;
+    SetConsoleTextAttribute (hl, bufferInfo.wAttributes |= iColor);
+}
