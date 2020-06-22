@@ -1,4 +1,5 @@
 //Função que cria um menu personalizado
+//([em breve] tudo vai ficar em só uma função!)
 
 #include <iostream>
 #include <windows.h>
