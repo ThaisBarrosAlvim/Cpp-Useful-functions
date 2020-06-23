@@ -1,14 +1,27 @@
-//Função que cria um menu personalizado
-//([em breve] tudo vai ficar em só uma função!)
+/*
+--------------Programa que mostra a funcionalizadade da função menu_f 2.0----------------
+
+Ela recebe uma varivavel op e modifica de 0 ao n - 1, n sendo o tamanho do vetor string
+
+quando o usuario aperta enter ele finaliza e mantem o valor de op que estava selecionado.
+
+*/
 
 #include <iostream>
+
+//para usar a textcolor();
 #include <windows.h>
+//para usar o getch();
 #include <conio.h>
+
 using namespace std;
+
+
+//função que modifica a cor
 void textcolor (int iColor);
-void imp_lista(string lista[],int n,int op);
-void move_list(int &op,char tecla,int n);
-void menu_f(string pedido,string opcoes[],int n,int &op);
+//função menu_f
+void menu_f(string pedido,string opcoes[],int n,int &op,int color);
+
 
 int main()
 {
@@ -16,80 +29,74 @@ int main()
     setlocale(LC_ALL, "Portuguese");
 
     // n é o tamanho da lista
-    int n = 3,op = 0;
-    
+    int n = 3,op = 0,color = 4;//cor 4 na textcolor
     //lista de opções
     string opcoes[n] = {"Opção 1","Opção 2","Opção 3"};
+    //pedido
+    string pedido = "Qual opção você quer escolher : \naperte [w/s] para mudar e [Enter] para escolher\n\n";
 
 
-    menu_f("Qual opção você quer escolher : \naperte [w/s] para mudar e [Enter] para escolher\n\n",opcoes,n,op);
+    menu_f(pedido,opcoes,n,op,color);
 
 
     switch (op)
     {
-case 0 :
-    cout <<"Voce selecionou a opção 1";
-    break;
-case 1 :
-    cout <<"Voce selecionou a opção 2";
-    break;
-default :
-    cout <<"Voce selecionou a opção 3";
-    break;
+    case 0 :
+        cout <<"\nVocê selecionou a opção 1";
+        break;
+    case 1 :
+        cout <<"\nVocê selecionou a opção 2";
+        break;
+    default :
+        cout <<"\nVocê selecionou a opção 3";
     }
 
     return 0;
 }
 
-
-void menu_f(string pedido,string opcoes[],int n,int &op){
+void menu_f(string pedido,string opcoes[],int n,int &op,int color)
+{
     char tecla;
     //zera o op
     op = 0;
     do
     {
         system("cls");
+        //pode colocar mais coisas aqui, isso vai aparecer antes do pedido
         cout <<pedido <<endl<<endl;
-        imp_lista(opcoes,n,op);
+
+        for(int i=0; i<n; i++)
+        {
+            if(i==op)
+            {
+                textcolor(color);
+                cout << opcoes[i] << endl;
+                textcolor(15);
+            }
+            else cout << opcoes[i] << endl;
+        }
+
         //reseta a tecla
         tecla = 'z';
         //prende o usuario no getch(); atê que ele digite, w,s,enter
-        while(tecla != 'w' and tecla != 'W' && tecla != 's' && tecla !='S' && tecla != 13)
+        while(tecla != 'w' and tecla != 'W' and tecla != 's' and tecla !='S' and tecla != 13)
         {
             tecla = getch();
 
         }
         //move para a direção escolhida w/s
-        move_list(op,tecla,n);
+        if(tecla == 'w' or tecla == 'W')
+        {
+            if(op != 0)
+                op--;
+        }
+
+        else if(tecla == 's' or tecla == 'S')
+            if(op != n-1)
+                op++;
     }
     //sai do loop se o usuario apertar enter
     while(tecla != 13);
-}
-
-void move_list(int &op,char tecla,int n)
-{
-    if(tecla == 'w' or tecla == 'W')
-    {
-        if(op != 0)
-            op--;
-    }
-    else if(tecla == 's' or tecla == 'S')
-        if(op != n-1)
-            op++;
-}
-
-void imp_lista(string lista[],int n,int op)
-{
-    for(int i=0; i<n; i++)
-    {
-        if(i==op)
-        {
-            textcolor(4);
-            cout << lista[i] << endl;
-            textcolor(15);
-        }
-        else cout << lista[i] << endl;
-    }
 }
 
 void textcolor (int iColor)
