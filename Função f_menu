@@ -29,7 +29,7 @@ int main()
     setlocale(LC_ALL, "Portuguese");
 
     // n is the size of op array 
-    int n = 3,op,color = 4;//color 4 na textcolor
+    int n = 3,op,color = 4;//color 4 in textcolor
     //op array is the options 
     string op_array[n] = {"Opção 1","Opção 2","Opção 3"};
     //call
