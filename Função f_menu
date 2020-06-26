@@ -1,26 +1,26 @@
 /*
---------------Programa que mostra a funcionalizadade da função menu_f 2.0----------------
+                 Program that shows the functionality of the menu_v (Vertical menu)  
 
-Ela recebe uma varivavel op e modifica de 0 ao n - 1, n sendo o tamanho do vetor string
+    It receives an op variable and changes from 0 to n - 1, n being the length of the string array
 
-quando o usuario aperta enter ele finaliza e mantem o valor de op que estava selecionado.
-
+    when the user presses Enter it ends and keeps the op value that was selected.
+    
 */
 
+//default 
 #include <iostream>
-
-//para usar a textcolor();
+//to use textcolor();
 #include <windows.h>
-//para usar o getch();
+//to use getch();
 #include <conio.h>
 
 using namespace std;
 
 
-//função que modifica a cor
+//function thats change the color
 void textcolor (int iColor);
-//função menu_f
-void menu_f(string pedido,string opcoes[],int n,int &op,int color);
+//function menu_v
+void menu_v(string call,string op_array[],int n,int &op,int icolor);
 
 
 int main()
@@ -28,15 +28,15 @@ int main()
 
     setlocale(LC_ALL, "Portuguese");
 
-    // n é o tamanho da lista
-    int n = 3,op = 0,color = 4;//cor 4 na textcolor
-    //lista de opções
-    string opcoes[n] = {"Opção 1","Opção 2","Opção 3"};
-    //pedido
-    string pedido = "Qual opção você quer escolher : \naperte [w/s] para mudar e [Enter] para escolher\n\n";
+    // n is the size of op array 
+    int n = 3,op,color = 4;//color 4 na textcolor
+    //op array is the options 
+    string op_array[n] = {"Opção 1","Opção 2","Opção 3"};
+    //call
+    string call = "Qual opção você quer escolher : \naperte [w/s] para mudar e [Enter] para escolher\n\n";
 
-
-    menu_f(pedido,opcoes,n,op,color);
+    //it doesn't matter the op value when he enters
+    menu_v(call,op_array,n,op,color);
 
 
     switch (op)
@@ -51,18 +51,28 @@ int main()
         cout <<"\nVocê selecionou a opção 3";
     }
 
+    cout << endl << endl;
+
+
+
     return 0;
 }
 
-void menu_f(string pedido,string opcoes[],int n,int &op,int color)
+//to use textcolor();
+//#include <windows.h>
+//to use getch();
+//#include <conio.h>
+
+
+void menu_v(string pedido,string opcoes[],int n,int &op,int icolor)
 {
-    char tecla;
-    //zera o op
+    char key;
+    //reset op
     op = 0;
     do
     {
         system("cls");
-        //pode colocar mais coisas aqui, isso vai aparecer antes do pedido
+        //you can put what ever you want here, will be showed above the op_array
         cout <<pedido <<endl<<endl;
 
         for(int i=0; i<n; i++)
@@ -76,35 +86,37 @@ void menu_f(string pedido,string opcoes[],int n,int &op,int color)
             else cout << opcoes[i] << endl;
         }
 
-        //reseta a tecla
-        tecla = 'z';
-        //prende o usuario no getch(); atê que ele digite, w,s,enter
-        while(tecla != 'w' and tecla != 'W' and tecla != 's' and tecla !='S' and tecla != 13)
+        //reset key
+        key = 'z';
+        // trap the user in getch (); until he types, w, s or enter
+        while(key != 'w' and key != 'W' and key != 's' and key !='S' and key != 13)
         {
-            tecla = getch();
+            key = getch();
 
         }
-        //move para a direção escolhida w/s
-        if(tecla == 'w' or tecla == 'W')
+        // move to the chosen direction [w/s]
+        if(key == 'w' or key == 'W')
         {
             if(op != 0)
                 op--;
         }
 
-        else if(tecla == 's' or tecla == 'S')
+        else if(key == 's' or key == 'S')
             if(op != n-1)
                 op++;
     }
-    //sai do loop se o usuario apertar enter
-    while(tecla != 13);
+    // exit the loop if the user presses enter
+    while(key != 13);
 }
+
 
 void textcolor (int iColor)
 {
-
     HANDLE hl = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_SCREEN_BUFFER_INFO bufferInfo;
     BOOL b = GetConsoleScreenBufferInfo(hl, &bufferInfo);
     bufferInfo.wAttributes &= 0x00F0;
     SetConsoleTextAttribute (hl, bufferInfo.wAttributes |= iColor);
 }
+
+
