@@ -1,13 +1,13 @@
 /*
-                 Program that shows the functionality of the menu_v (Vertical menu)  
+                 Program that shows the functionality of the menu_v (Vertical menu)
 
     It receives an op variable and changes from 0 to n - 1, n being the length of the string array
 
     when the user presses Enter it ends and keeps the op value that was selected.
-    
+
 */
 
-//default 
+//default
 #include <iostream>
 //to use textcolor();
 #include <windows.h>
@@ -28,9 +28,9 @@ int main()
 
     setlocale(LC_ALL, "Portuguese");
 
-    // n is the size of op array 
+    // n is the size of op array
     int n = 3,op,color = 4;//color 4 in textcolor
-    //op array is the options 
+    //op array is the options
     string op_array[n] = {"Opção 1","Opção 2","Opção 3"};
     //call
     string call = "Qual opção você quer escolher : \naperte [w/s] para mudar e [Enter] para escolher\n\n";
@@ -42,13 +42,13 @@ int main()
     switch (op)
     {
     case 0 :
-        cout <<"\nVocê selecionou a opção 1";
+        cout <<"\nYou selected option 1";
         break;
     case 1 :
-        cout <<"\nVocê selecionou a opção 2";
+        cout <<"\nYou selected  option 2";
         break;
     default :
-        cout <<"\nVocê selecionou a opção 3";
+        cout <<"\nYou selected  option 3";
     }
 
     cout << endl << endl;
