@@ -19,8 +19,8 @@ using namespace std;
 
 //function thats change the color
 void textcolor (int iColor);
-//function menu_v
-void menu_v(string call,string op_array[],int n,int &op,int icolor);
+//function menu_h
+void menu_h(string call,string op_array[],int n,int &op,int icolor);
 
 
 int main()
