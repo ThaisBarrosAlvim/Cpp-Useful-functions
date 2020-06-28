@@ -77,7 +77,6 @@ int main()
 
                 default :
                     switch_menu = true;
-                    break;
                 }
             }
             while(!switch_menu);
@@ -108,7 +107,6 @@ int main()
 
                 default :
                     switch_menu = true;
-                    break;
                 }
             }
             while(!switch_menu);
