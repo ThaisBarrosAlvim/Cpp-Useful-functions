@@ -1,0 +1,176 @@
+#include <iostream>
+//to use textcolor();
+#include <windows.h>
+//to use getch();
+#include <conio.h>
+
+using namespace std;
+
+//function thats change the color
+void textcolor(int Color);
+
+//option to use inside menu structures, and like the default menu_v 
+void menu_v(string call, string op_array[], int n, int &op, int color,int compound);
+int main()
+{
+    //external MENU
+    bool keep = true, switch_menu = false;
+    int n1 = 3, op1;
+    string op_array1[n1] = {"Access Internal Menu 1", "Access Internal Menu 2", "Exit"},
+           call1 = "External MENU \nPress [w/s] to change and [Enter] to choose.\n\n";
+
+    //internal MENU 1
+    int n2 = 3, op2;
+    string op_array2[n2] = {"Option 1", "Option 2", "\nReturn last Menu"},
+           call2 = "Internal MENU 1 \nPress [w/s] to change and [Enter] to choose,\n\nESC to return to last menu.\n\n";
+
+    //Internal MENU 2
+    int n3 = 3, op3;
+    string op_array3[n3] = {"Option 1", "Option 2", "\nReturn last Menu"},
+           call3 = "Internal MENU 2 \nPress [w/s] to change and [Enter] to choose,\n\nESC to return to last menu.\n\n";
+
+    do
+    {
+        op1 = 0;
+        //external menu
+        menu_v(call1, op_array1, n1, op1, 6,0);//when we put 0 in compound  space gonna work like the deafault menu_v 
+        op2 = 0;
+        op3 = 0;
+        switch (op1)
+        {
+
+        case 0: //Internal menu 1
+
+            do
+            {
+                switch_menu = 0;
+                menu_v(call2, op_array2, n2, op2, 4,1);
+
+                switch (op2)
+                {
+                   
+                case 0:
+                    system("cls");
+                    cout << "\nOption 1 of the Internal menu 1.\n\n";
+                    system("pause");
+                    break;
+
+                case 1:
+                    system("cls");
+                    cout << "\nOption 2 of the Internal menu 1.\n\n";
+                    system("pause");
+                    break;
+
+                default:    /*To use the menu_v modded in compound menu structures, you have to keep default option,
+                            because the function will change op value to go to default*/
+                    switch_menu = true;
+                }
+            } while (!switch_menu);
+            break;
+
+        case 1: //Internal menu 2
+
+            do
+            {
+                switch_menu = 0;
+                menu_v(call3, op_array3, n3, op3, 11,1);
+
+                switch (op3)
+                {
+                case 0:
+                    system("cls");
+                    cout << "\nOption 1 of the Internal menu 2.\n\n";
+                    system("pause");
+                    break;
+
+                case 1:
+                    system("cls");
+                    cout << "\nOption 2 of the Internal menu 2.\n\n";
+                    system("pause");
+                    break;
+
+                default:
+                            /*To use the menu_v modded in compound menu structures, you have to keep default option,
+                            because the function will change op value to go to default*/
+                    switch_menu = true;
+                }
+            } while (!switch_menu);
+            break;
+
+        default:
+            keep = false;
+        }
+
+    } while (keep);
+
+    return 0;
+    
+}
+
+//when we put 0 in compound  space gonna work like the deafault menu_v
+//when we put 1 in compound  space gonna set op = n; so in the compound menu structure, will return to last menu
+void menu_v(string call, string op_array[], int n, int &op, int color,int compound)
+{
+  char key;
+    do
+    {
+        system("cls");
+        cout << call << endl
+             << endl;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (i == op)
+            {
+                textcolor(color);
+                cout << op_array[i] << endl;
+                //default color is set to 15 white
+                textcolor(15);
+            }
+            else
+                cout << op_array[i] << endl;
+        }
+
+        //reset key
+        key = 'z';
+        // trap the user in getch(); until he types, w, s, enter or ESC
+        while (key != 'w' and key != 'W' and key != 's' and key != 'S' and key != 13 and key != 27)
+            key = getch();         
+        
+        //if key == ESC, will put a invalid value in op, and change switch_menu to true 
+        if(key == 27 and compound == 1)
+        {
+        op = n;
+        break;
+        }
+
+         // move to the chosen direction [w/s]
+        if (key == 'w' or key == 'W')
+        {
+            if (op != 0)
+                op--;
+        }
+
+        else if (key == 's' or key == 'S')
+        {
+            if (op != n - 1)
+                op++;
+        }
+    }
+    // exit the loop if the user presses enter
+    while (key != 13);
+
+
+
+
+}
+
+
+void textcolor(int Color)
+{
+    HANDLE hl = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO bufferInfo;
+    BOOL b = GetConsoleScreenBufferInfo(hl, &bufferInfo);
+    bufferInfo.wAttributes &= 0x00F0;
+    SetConsoleTextAttribute(hl, bufferInfo.wAttributes |= Color);
+}
