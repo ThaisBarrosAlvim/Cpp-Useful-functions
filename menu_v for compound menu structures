@@ -1,3 +1,15 @@
+/*
+This is a diferent version of menu_v, to use in compound menu structures, now we can press ESC to return to the last menu.
+
+There is a new parameter, called compound, when we put 0, menu_v will work normaly, when we put 1, the functionality will work.
+
+Remember that your compound menu structure must have the default option of the switch , set by 'switch_menu = true'
+
+To understand you must have read this:
+compound menu structures --> https://github.com/PedroAlvim/Useful-Functions/blob/master/Compound%20menu%20structure%20with%20menu_v
+menu_v --> https://github.com/PedroAlvim/Useful-Functions/blob/master/Vertical%20Menu
+*/
+
 #include <iostream>
 //to use textcolor();
 #include <windows.h>
@@ -137,7 +149,7 @@ void menu_v(string call, string op_array[], int n, int &op, int color,int compou
         while (key != 'w' and key != 'W' and key != 's' and key != 'S' and key != 13 and key != 27)
             key = getch();         
         
-        //if key == ESC, will put a invalid value in op, and change switch_menu to true 
+        //if key == ESC, will set the value to go to the default of the switch..case
         if(key == 27 and compound == 1)
         {
         op = n;
