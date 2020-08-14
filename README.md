@@ -8,7 +8,7 @@ Created on Sun Jun 21 2020 @author: Pedro Alvim - @PedroAlvim
 REFerences:
 1. Menu_v and Menu_h
 
-    textcolor(); function: https://www.clubedohardware.com.br/topic/859181-resolvido-mudar-cor-da-fonte-no-codeblocks/
+    textcolor(); function: https://www.clubedohardware.com.br/topic/859181-resolvido-mudar-cor-da-fonte-no-codeblocks/?tab=comments#comment-4850643
 
 
 2. Shuffle an array with rand();
