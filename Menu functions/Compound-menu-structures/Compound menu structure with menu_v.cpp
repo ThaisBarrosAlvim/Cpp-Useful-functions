@@ -27,7 +27,7 @@ int main()
     //external MENU
     bool keep = true, switch_menu = false;
     int n1 = 3, op1;
-    string op_array1[n1] = {"Acess Internal Menu 1", "Acess Internal Menu 2", "Exit"},
+    string op_array1[n1] = {"Access Internal Menu 1", "Access Internal Menu 2", "Exit"},
            call1 = "External MENU \nPress [w/s] to change and [Enter] to choose.\n\n";
 
     //internal MENU 1
