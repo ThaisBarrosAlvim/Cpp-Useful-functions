@@ -1,4 +1,4 @@
-# Useful functions
+# C++ Useful functions
 
 Ongoing project create by @PedroAlvim to share my useful functions using C++
 
