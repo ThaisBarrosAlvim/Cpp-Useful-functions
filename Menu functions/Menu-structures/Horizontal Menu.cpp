@@ -33,7 +33,7 @@ int main()
     //op array is the options
     string op_array[n] = {"Option 1","Option 2","Option 3"};
     //call
-    string call = "Which option do you want to choose? \nPress [a/d] to change and [Enter] to choose\n\n";
+    string call = "MENU_H \n\nPress [a/d] to change and [Enter] to choose\n\n";
 
     //it doesn't matter the op value when he enters
     menu_h(call,op_array,n,op,color);
@@ -43,12 +43,15 @@ int main()
     switch (op)
     {
     case 0 :
+        system("cls");
         cout <<"\n\nYou selected option 1.";
         break;
     case 1 :
+        system("cls");
         cout <<"\n\nYou selected  option 2.";
         break;
     default :
+        system("cls");
         cout <<"\n\nYou selected  option 3.";
     }
 
