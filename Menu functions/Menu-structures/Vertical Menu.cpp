@@ -18,7 +18,7 @@ int main()
 {
     int n = 3, op;
     string op_array[n] = {"Option 1", "Option 2", "Option 3"};
-    string call = " MENU \nPress [w/s] to change and [Enter] to choose.\n\n";
+    string call = "MENU_V \n\nPress [w/s] to change and [Enter] to choose.\n\n";
 
     //set the start point of op in menu_v
     op = 0;
