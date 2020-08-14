@@ -1,6 +1,9 @@
 # C++ Useful functions
 
-Ongoing project create by @PedroAlvim to share my useful functions using C++
+Ongoing project used to share my c++ functions, all created in the 1st year of my graduation in Computer Engineering
+
+Created on Sun Jun 21 2020 @author: Pedro Alvim - @PedroAlvim
+
 
 REFerences:
 1. Menu_v and Menu_h
