@@ -2,7 +2,7 @@
 
 Ongoing project used to share my c++ functions, all created in the 1st year of my graduation in Computer Engineering
 
-Created on Sun Jun 21 2020 @author: Pedro Alvim - @PedroAlvim
+Created on Sun Jun 21 2020 @author: Thais Barros Alvim - @ThaisBarrosAlvim
 
 
 REFerences:
